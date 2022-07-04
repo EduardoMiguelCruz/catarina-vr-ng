@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "catarina-vr-angular": {
+    "catarina-vr-ng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/catarina-vr-angular",
+            "outputPath": "dist/catarina-vr-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "catarina-vr-angular:build:production"
+              "browserTarget": "catarina-vr-ng:build:production"
             },
             "development": {
-              "browserTarget": "catarina-vr-angular:build:development"
+              "browserTarget": "catarina-vr-ng:build:development"
             }
           },
           "defaultConfiguration": "development"
