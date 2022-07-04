@@ -1,0 +1,24 @@
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeicons/primeicons.css';
+@import '../node_modules/primeng/resources/themes/mdc-light-indigo/theme.css';
+@import '../node_modules/primeflex/primeflex.css';
+
+body {
+    margin : 0px; 
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('./assets/Comfortaa-Regular.ttf');
+}
+
+.p-dialog-header {
+    border-bottom: 1px solid rgb(222, 226, 230) !important;
+    padding: 1rem !important;
+}
+
+.p-dialog-footer {
+    border-top: 1px solid rgb(222, 226, 230) !important;
+    padding: 1rem !important;
+}

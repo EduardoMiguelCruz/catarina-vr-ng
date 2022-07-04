@@ -1,0 +1,16 @@
+<a-scene embedded 
+         vr-mode-ui="enabled: false;"
+         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; cameraParametersUrl: ./assets/aframe/camera_para.dat;">
+     <!-- handle barcode marker -->
+     <ng-container *ngFor="let marker of markers; trackBy:track">
+         <a-marker type='barcode' [attr.value]="marker.value">
+             <a-box position="0 0.5 0"
+             [attr.multisrc]="marker.srcs"
+             [attr.material]="'transparent: true; opacity: 0.95; side: double'"
+             [attr.animation]="'property: rotation; to: 0 360 0; loop: true; dur: 10000'">
+            </a-box>
+        </a-marker>
+    </ng-container>
+        <!-- define a simple camera -->
+    <a-entity camera></a-entity>
+</a-scene>
