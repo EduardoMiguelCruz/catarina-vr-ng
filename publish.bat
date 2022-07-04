@@ -1,10 +1,8 @@
 @ECHO off
 cd %~dp0
-cd dist/catarina-vr-angular
-git init
-git remote add origin https://github.com/EduardoMiguelCruz/catarina-ar.git
-git pull origin master
-git add .
-git commit -m "new version"
-git push -u origin master
+git checkout -b gh-pages
+git push origin gh-pages
+npm install -g angular-cli-ghpages
+ng build --configuration production --base-href https://EduardoMiguelCruz.github.io/catarina-ar-ng/
+ngh --dir=dist/catarina-vr-angular
 pause
