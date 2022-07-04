@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --configuration production --base-href https://EduardoMiguelCruz.github.io/catarina-ar/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
 
