@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
 
 //primeng
 import { MessageService } from 'primeng/api';
@@ -11,18 +12,25 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
-import {DividerModule} from 'primeng/divider';
+import { DividerModule } from 'primeng/divider';
+
+//services
+import { FirebaseService } from './services/firebase.service';
 
 //components
 import { AppComponent } from './app.component';
 import { DedicatoriaButtonComponent } from './components/dedicatoria-button/dedicatoria-button.component';
 import { SelfiePhotoComponent } from './components/selfie-photo/selfie-photo.component';
 import { VrCameraComponent } from './components/vr-camera/vr-camera.component';
-import { VrComponent } from './pages/vr.component';
+
+//pages
+import { VrComponent } from './pages/vr/vr.component';
+import { ViewDedicatoriasComponent } from './pages/view/view-dedicatorias.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/vr', pathMatch: 'full' },
-  { path: 'vr', component: VrComponent }
+  { path: 'vr', component: VrComponent },
+  { path: 'view', component: ViewDedicatoriasComponent }
 ];
 
 @NgModule({
@@ -31,7 +39,9 @@ const routes: Routes = [
     DedicatoriaButtonComponent,
     SelfiePhotoComponent,
     VrCameraComponent,
-    VrComponent
+    //pages
+    VrComponent,
+    ViewDedicatoriasComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +54,12 @@ const routes: Routes = [
     InputTextModule,
     InputTextareaModule,
     ToastModule,
-    DividerModule
+    DividerModule,
+    CardModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    FirebaseService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
