@@ -1,8 +1,10 @@
 <div class="overflow-auto" style="height: 100vh;">
-  <div class="flex flex-wrap flex-column align-items-center">
+  <div class="flex flex-wrap flex-column align-items-center  p-4 ">
     <div class="text-2xl">Dedicatorias</div>
-
-    <p-card [header]="item.name" [style]="{width: '360px'}" styleClass="p-card-shadow" class="my-4" *ngFor="let item of list">
+    <p-card [header]="item.name" subheader="{{item.date | date:'dd/MM/yyyy HH:mm'}}" styleClass="p-card-shadow" class="my-4 w-full" *ngFor="let item of list">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="item.image" *ngIf="item.image">
+      </ng-template>
       <p>{{item.message}}</p>
     </p-card>
   </div>

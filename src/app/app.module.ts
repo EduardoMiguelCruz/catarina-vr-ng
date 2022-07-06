@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardModule } from 'primeng/card';
+import {HttpClientModule} from '@angular/common/http';
 
 //primeng
 import { MessageService } from 'primeng/api';
@@ -13,6 +13,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
 import { DividerModule } from 'primeng/divider';
+import { FileUploadModule } from 'primeng/fileupload';
+import { CardModule } from 'primeng/card';
 
 //services
 import { FirebaseService } from './services/firebase.service';
@@ -48,6 +50,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NoopAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     ButtonModule,
     DialogModule,
@@ -55,7 +58,8 @@ const routes: Routes = [
     InputTextareaModule,
     ToastModule,
     DividerModule,
-    CardModule
+    CardModule,
+    FileUploadModule
   ],
   providers: [
     MessageService,

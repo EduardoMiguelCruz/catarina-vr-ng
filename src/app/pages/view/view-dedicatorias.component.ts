@@ -6,7 +6,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class ViewDedicatoriasComponent implements OnInit {
 
-  list: { name: string, message: string }[] = [];
+  list: { name: string, message: string, image: string, date: Date }[] = [];
 
   constructor(
     private firebaseService: FirebaseService
@@ -15,11 +15,8 @@ export class ViewDedicatoriasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.firebaseService.getDedicatorias().then(querySnapshot => {
-      this.list = [];
-      querySnapshot.forEach(n => {
-        this.list.push(<any>n.data());
-      });
+    this.firebaseService.getDedicatorias().then((list) => {
+      this.list = <any>list;
     })
   }
 }

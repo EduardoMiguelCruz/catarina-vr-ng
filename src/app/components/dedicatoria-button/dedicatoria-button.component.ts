@@ -21,7 +21,8 @@ export class DedicatoriaButtonComponent {
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      message: ['', Validators.required]
+      message: ['', Validators.required],
+      image: [null]
     })
   }
 
@@ -36,6 +37,7 @@ export class DedicatoriaButtonComponent {
       this.firebaseService.setDedicatoria({
         name: this.form.value.name,
         message: this.form.value.message,
+        image: this.form.value.image
       }).then((docRef: any) => {
         this.messageService.add({
           key: 'successToast',
@@ -46,6 +48,12 @@ export class DedicatoriaButtonComponent {
         this.displayDialog = false;
       })
         .catch((error: any) => {
+          this.messageService.add({
+            key: 'errorToast',
+            severity: 'error',
+            summary: 'Erro ao enviar dedicatória'
+          });
+
           console.error("Error adding document: ", error);
         }).finally(() => {
           this.loading = false;
@@ -55,5 +63,20 @@ export class DedicatoriaButtonComponent {
 
   close() {
     this.displayDialog = false;
+  }
+
+  imageSrc: string = '';
+  myUploader(event: any) {
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      this.form.get('image').setValue(file);
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+      };
+    }
   }
 }
