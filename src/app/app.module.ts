@@ -13,8 +13,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ToastModule } from 'primeng/toast';
 import { DividerModule } from 'primeng/divider';
-import { FileUploadModule } from 'primeng/fileupload';
 import { CardModule } from 'primeng/card';
+
+import { GalleryModule, GALLERY_CONFIG } from 'ng-gallery';
 
 //services
 import { FirebaseService } from './services/firebase.service';
@@ -28,11 +29,13 @@ import { VrCameraComponent } from './components/vr-camera/vr-camera.component';
 //pages
 import { VrComponent } from './pages/vr/vr.component';
 import { ViewDedicatoriasComponent } from './pages/view/view-dedicatorias.component'
+import { GalleryComponent } from './pages/gallery/gallery.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/vr', pathMatch: 'full' },
   { path: 'vr', component: VrComponent },
-  { path: 'view', component: ViewDedicatoriasComponent }
+  { path: 'view', component: ViewDedicatoriasComponent },
+  { path: 'gallery', component: GalleryComponent }
 ];
 
 @NgModule({
@@ -43,7 +46,8 @@ const routes: Routes = [
     VrCameraComponent,
     //pages
     VrComponent,
-    ViewDedicatoriasComponent
+    ViewDedicatoriasComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
@@ -59,11 +63,18 @@ const routes: Routes = [
     ToastModule,
     DividerModule,
     CardModule,
-    FileUploadModule
+    GalleryModule
   ],
   providers: [
     MessageService,
-    FirebaseService
+    FirebaseService,
+    {
+      provide: GALLERY_CONFIG,
+      useValue: {
+        dots: true,
+        imageSize: 'cover'
+      }
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, Firestore } from 'firebase/firestore/lite';
-import { uploadBytes, ref, getStorage, FirebaseStorage, getDownloadURL } from 'firebase/storage';
+import { uploadBytes, ref, getStorage, listAll, FirebaseStorage, getDownloadURL } from 'firebase/storage';
 
 export class FirebaseService {
     db: Firestore = <any>null;
@@ -20,7 +20,7 @@ export class FirebaseService {
         value.date = new Date();
         const messagesCol = collection(this.db, "messages");
         if (value.image != null) {
-            const st = ref(this.storage, `/selfies_${value.name}_${new Date().toISOString()}`);
+            const st = ref(this.storage, `/Selfies/${value.name}_${new Date().toISOString()}`);
             return uploadBytes(st, value.image, { customMetadata: { type: 'selfie' } }).then(n => {
                 value.image = n.ref.fullPath;
                 return addDoc(messagesCol, value);
@@ -58,9 +58,38 @@ export class FirebaseService {
 
                 Promise.all(promises).then(() => {
                     resolve(list);
-                });
+                }).catch(r => reject(r));
+
             }).catch(r => reject(r));
         })
 
+    }
+
+    getImages() {    
+        return new Promise<any[]>((resolve, reject) => {
+            const st = ref(this.storage, `/Photos`);
+            
+            listAll(st).then(images => {
+                let list = images.items.map(n=> {
+                    return {
+                        image: <any>n,
+                        name: n.name
+                    }
+                });
+            
+                let promises = <any>[];
+                for (let item of list) {
+                    promises.push(
+                        getDownloadURL(item.image).then(url => {
+                            item.image = url;
+                        })
+                    );
+                }
+                Promise.all(promises).then(() => {
+                    resolve(list);
+                }).catch(r => reject(r));
+
+            }).catch(r => reject(r));
+        })
     }
 }
