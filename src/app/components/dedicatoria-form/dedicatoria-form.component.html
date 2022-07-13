@@ -1,0 +1,24 @@
+<div class="flex flex-column" [formGroup]="form">
+    
+    <div class="flex flex-column">
+        <h5>Identifica-te</h5>
+        <input type="text" pInputText formControlName="name" />
+    </div>
+
+    <div class="flex flex-column">
+        <h5>Escreve aqui a tua mensagem</h5>
+        <textarea pInputTextarea rows="8" formControlName="message"></textarea>
+    </div>
+
+    <div class="flex flex-column align-items-center">
+        <h5>Tira uma fotografia engraçada para recordarmos este momento</h5>
+        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+        <input #fileInput type="file" (change)="myUploader($event)" hidden accept="image/*">
+        <button pButton icon="pi pi-upload" (click)="fileInput.click()" label="Carregar"></button>
+    </div>
+
+    <div class="flex flex-row justify-content-end"> 
+        <button pButton icon="pi pi-check" (click)="submitForm()" label="Enviar" class="mt-4 p-button-success"></button>
+    </div>
+</div>
+<p-toast position="bottom-center" key="successToast"></p-toast>

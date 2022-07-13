@@ -23,6 +23,7 @@ import { FirebaseService } from './services/firebase.service';
 //components
 import { AppComponent } from './app.component';
 import { DedicatoriaButtonComponent } from './components/dedicatoria-button/dedicatoria-button.component';
+import { DedicatoriaFormComponent } from './components/dedicatoria-form/dedicatoria-form.component';
 import { SelfiePhotoComponent } from './components/selfie-photo/selfie-photo.component';
 import { VrCameraComponent } from './components/vr-camera/vr-camera.component';
 
@@ -30,24 +31,30 @@ import { VrCameraComponent } from './components/vr-camera/vr-camera.component';
 import { VrComponent } from './pages/vr/vr.component';
 import { ViewDedicatoriasComponent } from './pages/view/view-dedicatorias.component'
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { IndexComponent as Index1Component } from './pages/Template1/index.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/vr', pathMatch: 'full' },
+  { path: '', redirectTo: '/1', pathMatch: 'full' },
   { path: 'vr', component: VrComponent },
   { path: 'view', component: ViewDedicatoriasComponent },
-  { path: 'gallery', component: GalleryComponent }
+  { path: 'gallery', component: GalleryComponent },
+  { path: '1', component: Index1Component },
+  { path: 'vrframe', component: VrCameraComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     DedicatoriaButtonComponent,
+    DedicatoriaFormComponent,
     SelfiePhotoComponent,
     VrCameraComponent,
     //pages
     VrComponent,
     ViewDedicatoriasComponent,
-    GalleryComponent
+    GalleryComponent,
+
+    Index1Component
   ],
   imports: [
     BrowserModule,

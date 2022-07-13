@@ -3,6 +3,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { ImageItem } from 'ng-gallery';
 
 @Component({
+  selector: 'gallery-view',
   templateUrl: './gallery.component.html',
   styles: [`
     ::ng-deep .g-image-item {
