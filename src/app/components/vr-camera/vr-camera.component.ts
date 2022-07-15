@@ -2,7 +2,18 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'vr-camera',
-  templateUrl: './vr-camera.component.html'
+  templateUrl: './vr-camera.component.html',
+  styles: [
+    `
+      ::ng-deep video {
+        margin: 0px !important;
+        min-height: 100% !important;
+        max-height: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+      }
+    `
+  ]
 })
 export class VrCameraComponent implements OnInit {
 

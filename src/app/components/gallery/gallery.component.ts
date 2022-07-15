@@ -18,7 +18,6 @@ export class GalleryComponent implements OnInit {
   constructor(
     private firebaseService: FirebaseService
   ) {
-
   }
 
   ngOnInit(): void {

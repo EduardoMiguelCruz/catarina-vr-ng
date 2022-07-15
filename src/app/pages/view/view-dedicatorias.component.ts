@@ -6,12 +6,16 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class ViewDedicatoriasComponent implements OnInit {
 
-  list: { name: string, message: string, image: string, date: Date }[] = [];
+  list: { 
+    name: string, 
+    message: string, 
+    image: string, 
+    date: Date 
+  }[] = [];
 
   constructor(
     private firebaseService: FirebaseService
   ) {
-
   }
 
   ngOnInit(): void {

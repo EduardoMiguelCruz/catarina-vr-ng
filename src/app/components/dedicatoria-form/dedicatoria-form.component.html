@@ -1,16 +1,20 @@
 <div class="flex flex-column" [formGroup]="form">
     
-    <div class="flex flex-column">
-        <h5>Identifica-te</h5>
-        <input type="text" pInputText formControlName="name" />
+    <div class="field col-12">
+        <div class="p-float-label w-full">
+            <input id="inputname" type="text" pInputText formControlName="name" class="w-full"/>
+            <label for="inputname">Identifica-te</label>
+        </div>
     </div>
 
-    <div class="flex flex-column">
-        <h5>Escreve aqui a tua mensagem</h5>
-        <textarea pInputTextarea rows="8" formControlName="message"></textarea>
+    <div class="field col-12">
+        <div class="p-float-label w-full">
+            <textarea id="inputmessage" class="w-full" pInputTextarea rows="8" formControlName="message"></textarea>
+            <label for="inputmessage">Escreve aqui a tua mensagem</label>
+        </div>
     </div>
 
-    <div class="flex flex-column align-items-center">
+    <div class="field flex flex-column align-items-center">
         <h5>Tira uma fotografia engraçada para recordarmos este momento</h5>
         <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
         <input #fileInput type="file" (change)="myUploader($event)" hidden accept="image/*">
